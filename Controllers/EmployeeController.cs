@@ -21,52 +21,84 @@ namespace IBASEmployeeService.Controllers
                     Id = "21",
                     Name = "Mette Bangsbo",
                     Email = "meba@ibas.dk",
-                    Department = new Department() { Id = 1, Name = "Salg" }
+                    Department = new Department() {
+                        Id = 1,
+                        Name = "Salg"
+                    }
                 },
                 new Employee() {
                     Id = "22",
                     Name = "Hans Merkel",
                     Email = "hame@ibas.dk",
-                    Department = new Department() { Id = 2, Name = "Support" }
+                    Department = new Department() {
+                        Id = 2,
+                        Name = "Support"
+                    }
                 },
                 new Employee() {
                     Id = "23",
                     Name = "Karsten Mikkelsen",
                     Email = "kami@ibas.dk",
-                    Department = new Department() { Id = 2, Name = "Support" }
+                    Department = new Department() {
+                        Id = 2,
+                        Name = "Support"
+                    }
                 },
                 new Employee() {
                     Id = "24",
                     Name = "Anna Jensen",
                     Email = "anje@ibas.dk",
-                    Department = new Department() { Id = 3, Name = "IT" }
+                    Department = new Department() {
+                        Id = 3,
+                        Name = "IT"
+                    }
                 },
                 new Employee() {
                     Id = "25",
                     Name = "Omar Hassan",
                     Email = "omha@ibas.dk",
-                    Department = new Department() { Id = 3, Name = "IT" }
+                    Department = new Department() {
+                        Id = 3,
+                        Name = "IT"
+                    }
                 },
                 new Employee() {
                     Id = "26",
                     Name = "Freja Nielsen",
                     Email = "frni@ibas.dk",
-                    Department = new Department() { Id = 3, Name = "IT" }
+                    Department = new Department() {
+                        Id = 3,
+                        Name = "IT"
+                    }
                 },
                 new Employee() {
                     Id = "27",
                     Name = "Lars Pedersen",
                     Email = "lape@ibas.dk",
-                    Department = new Department() { Id = 4, Name = "Kantinen" }
+                    Department = new Department() {
+                        Id = 4,
+                        Name = "Kantinen"
+                    }
                 },
                 new Employee() {
                     Id = "28",
                     Name = "Sara Andersen",
                     Email = "saan@ibas.dk",
-                    Department = new Department() { Id = 4, Name = "Kantinen" }
+                    Department = new Department() {
+                        Id = 4,
+                        Name = "Kantinen"
+                    }
                 }
             };
             return employees;
+        }
+
+        // Opgave H: nyt endpoint
+        [HttpGet("GetEmployeesByDepartment/{department}")]
+        public IEnumerable<Employee> GetByDepartment(string department)
+        {
+            var all = Get();
+            return all.Where(e => e.Department.Name.ToLower() == department.ToLower());
         }
     }
 }
